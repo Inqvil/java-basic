@@ -26,8 +26,8 @@ public class Words {
             {"","","",""}
 
     };
-    public static String getDigit(int line, int column){
-        return digits[line][column];
+    public static String getDigit(long line, long column){
+        return digits[(int) line][(int) column];
     }
 
     public static String getWord(int massiveIndex, int index){

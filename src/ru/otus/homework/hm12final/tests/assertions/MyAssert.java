@@ -1,4 +1,4 @@
-package otus.hm12final.tests.assertions;
+package ru.otus.homework.hm12final.tests.assertions;
 
 public class MyAssert {
     public static void assertEquals (String excepted, String actual) {

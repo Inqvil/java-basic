@@ -1,9 +1,8 @@
-package otus.hm12final.tests;
-
-import otus.hm12final.app.Converter;
+package ru.otus.homework.hm12final.tests;
 
 
-import otus.hm12final.tests.assertions.MyAssert;
+import ru.otus.homework.hm12final.app.Converter;
+import ru.otus.homework.hm12final.tests.assertions.MyAssert;
 
 public class RightWordsTest {
     public static void correctNumberToWordTest (){
@@ -22,7 +21,7 @@ public class RightWordsTest {
             MyAssert.assertEquals("сто двадцать одна тысяча двести двадцать три рубля", converter.getNumberToText(121223));
             MyAssert.assertEquals("триста сорок четыре миллиона восемьсот тридцать четыре тысячи девятьсот восемьдесят четыре рубля", converter.getNumberToText(344834984));
             MyAssert.assertEquals("сто десять миллиардов триста два миллиона триста две тысячи триста девять рублей", converter.getNumberToText(110_302_302_309L));
-            MyAssert.assertEquals("сто одиннадцать рублей", converter.getNumberToText(111)); // почему этот тест постоянно падал? ввел те же значения и все заработало. я не понимаю
+            MyAssert.assertEquals("сто одиннадцать рублей", converter.getNumberToText(111));
             MyAssert.assertEquals("одна тысяча сто одиннадцать рублей", converter.getNumberToText(1111));
             MyAssert.assertEquals("одиннадцать тысяч сто одиннадцать рублей", converter.getNumberToText(11111));
             MyAssert.assertEquals("сто одиннадцать тысяч сто одиннадцать рублей", converter.getNumberToText(111111));

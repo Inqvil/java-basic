@@ -1,16 +1,19 @@
 package ru.otus.homework.hm12final.app;
 
+import java.util.Arrays;
+
 public class Converter {
     private long number;
     private final StringBuffer stringBuffer = new StringBuffer();
 
     public String getNumberToText(long number) {
         this.number = number;
+        String str = Currency.getCurrency(1, reformer(number)); //выглядит не очень, но как по другому хз
         stringBuffer.replace(0, stringBuffer.length(), "");
         numberDigits = createNumberDigits();
         addWords();
         removeWhiteSpaces(stringBuffer);
-        return stringBuffer.toString().trim();
+        return stringBuffer.append(str).toString().trim();
     }
 
     private int[] numberDigits = createNumberDigits();
@@ -48,6 +51,7 @@ public class Converter {
         int tens = number % 100 / 10;
         int tensUnits = number % 100;
         int units = number % 10;
+
         if (isBetweenTens(tensUnits)) {
             return Words.getWord(5, hundreds) + " " + Words.getWord(3, units);
         } else {
@@ -77,6 +81,7 @@ public class Converter {
     }
 
     private void addWords() {
+
         for (int i = 0; i < numberDigits.length; i++) {
             int number = numberDigits[i];
             if (number == 0) {
@@ -89,8 +94,6 @@ public class Converter {
             }
 
         }
-        stringBuffer.append(Currency.getCurrency(1, reformer(number)));
     }
-
 
 }

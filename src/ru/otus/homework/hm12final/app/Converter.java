@@ -1,20 +1,26 @@
 package ru.otus.homework.hm12final.app;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
-public class Converter {
+public class Converter implements  Convertible{
     private long number;
     private final StringBuffer stringBuffer = new StringBuffer();
 
-    public String getNumberToText(long number) {
+
+
+    @Override
+    public String convertNumberToWord(long number){
         this.number = number;
-        String str = Currency.getCurrency(1, reformer(number)); //выглядит не очень, но как по другому хз
+        String str = Currency.getCurrency(1, reformer(number));
         stringBuffer.replace(0, stringBuffer.length(), "");
         numberDigits = createNumberDigits();
         addWords();
         removeWhiteSpaces(stringBuffer);
         return stringBuffer.append(str).toString().trim();
     }
+
+
 
     private int[] numberDigits = createNumberDigits();
 
@@ -31,7 +37,6 @@ public class Converter {
             return 3;
         }
     }
-
     private int[] createNumberDigits() {
         int[] arr = new int[4];
 
@@ -81,7 +86,6 @@ public class Converter {
     }
 
     private void addWords() {
-
         for (int i = 0; i < numberDigits.length; i++) {
             int number = numberDigits[i];
             if (number == 0) {
@@ -92,8 +96,8 @@ public class Converter {
             } else {
                 stringBuffer.append(formatNumberToText(number, false)).append(" ").append(Words.getDigit(i, reformer(number))).append(" ");
             }
-
         }
     }
+
 
 }

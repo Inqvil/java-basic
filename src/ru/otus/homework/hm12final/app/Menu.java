@@ -4,24 +4,29 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-
 public class Menu {
+
     public static void menu() {
         Converter converter = new Converter();
         boolean exit = false;
-        System.out.println("Для выхода ввести 0");
+        String menu = "Для выхода ввести 0";
+        System.out.println(menu);
         Scanner sc = new Scanner(System.in);
-        try {
-            while (!exit) {
-                long choice = sc.nextLong();
 
-                System.out.println(converter.getNumberToText(choice));
+        while (!exit){
+            try {
+                long choice = sc.nextLong();
+                System.out.println(converter.convertNumberToWord(choice));
+
                 if (choice == 0) {
                     exit = true;
                 }
+            }catch (InputMismatchException inputMismatchException){
+                String badInput = sc.next(); //https://stackoverflow.com/questions/25101575/continue-a-while-loop-after-exception
+                System.out.println("Некорректный ввод: " + badInput);
+                continue;
             }
-        } catch (InputMismatchException inputMismatchException) {
-            System.out.println("некорректный ввод?"); //как снова его запустить без рекурсии?
         }
+
     }
 }
